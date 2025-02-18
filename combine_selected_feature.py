@@ -8,24 +8,6 @@ collab_features = ["homepage", "tagline", "title", "vote_average", "vote_count"]
 
 metadata_features = ["release_data", "runtime", "revenue"]
 
-content_pipeline = Pipeline([
-    ('tfidf', TfidfVectorizer()),  # Converts movie descriptions into TF-IDF features.
-    ('scaler', StandardScaler(with_mean=False))
-])
-
-collab_pipeline = Pipeline([
-    ('scaler', StandardScaler())
-])
-
-metadata_pipeline = Pipeline([
-    ('encoder', OneHotEncoder()),  # Converts categorical metadata like genres into numbers.
-    ('scaler', StandardScaler(with_mean=False))
-])
-
-combined_features = FeatureUnion([
-    ("content", content_pipeline),
-    ("collaborative", collab_pipeline),
-    ("metadata", metadata_pipeline)
-])
+new_df = df['genres'].astype(str) + '' + df['keywords'].astype(str) + '' + df['original_langage'].astype(str) + '' + df['cast'].astype(str) + '' + df['director'].astype(str) + '' + df['release_date'].astype(str) + '' + df['runtime'].astype(str) + '' + df['revenue'].astype(str) + '' + df["homepage"].astype(str) + '' + df['tagline'].astype(str) + '' + df['title'].astype(str) + '' + df['vote_average'].astype(str) + '' + df['vote_count'].astype(str) + '' + df['overview'].astype(str)
 
 combined_data = combined_features.fit_transform(df)
