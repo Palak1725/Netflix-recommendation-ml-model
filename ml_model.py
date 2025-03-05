@@ -43,7 +43,7 @@ for feat in selected_cols:
 
 """**Combining all selected feature**"""
 
-new_df = df['genres'].astype(str) + '' + df['keywords'].astype(str) + '' + df['tagline'].astype(str) + '' + df['cast'].astype(str) + '' + df['director'].astype(str) + '' + df['release_date'].astype(str) + '' + df['runtime'].astype(str) + '' + df['revenue'].astype(str) + '' + df["homepage"].astype(str) + '' + df['tagline'].astype(str) + '' + df['title'].astype(str) + '' + df['vote_average'].astype(str) + '' + df['vote_count'].astype(str)
+new_df = df['genres'].astype(str) + '' + df['keywords'].astype(str) + '' + df['original_langage'].astype(str) + '' + df['cast'].astype(str) + '' + df['director'].astype(str) + '' + df['release_date'].astype(str) + '' + df['runtime'].astype(str) + '' + df['revenue'].astype(str) + '' + df["homepage"].astype(str) + '' + df['tagline'].astype(str) + '' + df['title'].astype(str) + '' + df['vote_average'].astype(str) + '' + df['vote_count'].astype(str) + '' + df['overview'].astype(str)
 new_df
 
 """**First five values of new data frame**"""
