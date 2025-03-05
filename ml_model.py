@@ -65,7 +65,7 @@ cv_fit = cv.fit_transform(new_df)
 
 print(cv_fit)
 
-similarity= cosine_similarity(feat_vectors)
+similarity= cosine_similarity(cv_fit)
 print(similarity)
 
 similarity.shape
@@ -75,7 +75,7 @@ movie_name=input('enter your favourite movie name: ')
 """**Creating a list of movies given in the dataset**"""
 
 #creating a list of movies given in the dataset
-list_of_all_titles=df['title'].to_list()
+list_of_all_titles=df['title'].astype(str).to_list()
 print(list_of_all_titles)
 
 """**Find close match for movie name given by user**"""
@@ -83,3 +83,26 @@ print(list_of_all_titles)
 find_close_match= difflib.get_close_matches(movie_name,list_of_all_titles)
 print(find_close_match)
 
+"""**The closest movie according to search**"""
+
+close_match=find_close_match[0]
+print(close_match)
+
+"""**Find index of movie with title**"""
+
+index_mov=df[df.title==close_match]["index"].values[0]
+
+"""**Finding similarity score**"""
+
+similarity_score=list(enumerate(similarity[index_mov]))
+
+print(similarity_score)
+
+"""**Index Numbers of top 10 movies along with their similarity**"""
+
+print('Index Numbers of top 10 movies along with their similarity')
+sorting_similar_mov=sorted(similarity_score,key= lambda x:x[1], reverse=True)
+top10_recomended= sorting_similar_mov[:10]
+print(top10_recomended)
+for i in top10_recomended:
+    index=i[0]
