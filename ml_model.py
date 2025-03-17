@@ -106,3 +106,8 @@ top10_recomended= sorting_similar_mov[:10]
 print(top10_recomended)
 for i in top10_recomended:
     index=i[0]
+print("Top 10 related movies for",movie_name, "are: ")
+for i in top10_recomended:
+    index=i[0]
+    title_of_movie=df[df.index==index]['title'].values
+    print(index,title_of_movie)
